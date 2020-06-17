@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'com.remidufeucvweb'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+   compile 'net.dv8tion:JDA:4.1.1_165'
+}
