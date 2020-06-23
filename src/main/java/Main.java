@@ -52,7 +52,7 @@ public class Main extends ListenerAdapter {
                     if ( event.getAuthor() != j1) {
                         j2 = event.getAuthor();
                         defiG = false;
-                        event.getChannel().sendMessage("un defi va se lancer entre "+ j2.getAsMention() + " et "+ j1.getAsMention() + " !").queue();
+                        Defi.initDefi(j1,j2,event);
                     } else {
                         event.getChannel().sendMessage("Vous ne pouvez pas vous affronter vous meme !").queue();
                     }
@@ -67,7 +67,7 @@ public class Main extends ListenerAdapter {
                 if (event.getAuthor() != j1) {
                     j2 = event.getAuthor();
                     defiG = false;
-                    event.getChannel().sendMessage("un defi va se lancer entre "+ j2.getAsMention() + " et "+ j1.getAsMention() + " !").queue();
+                    Defi.initDefi(j1,j2,event);
                 } else {
                     event.getChannel().sendMessage("Vous ne pouvez pas vous affronter vous meme !").queue();
                 }
@@ -75,17 +75,31 @@ public class Main extends ListenerAdapter {
 
             } else if (event.getMessage().getContentRaw().contains("start")) {
                 if (event.getAuthor() == j2) {
-                    event.getChannel().sendMessage("un defi va se lancer entre "+ j2.getAsMention() + " et "+ j1.getAsMention() + " !").queue();
+                    Defi.initDefi(j1,j2,event);
                 } else {
                     event.getChannel().sendMessage("Vous n'êtes pas le joueur défié !").queue();
                 }
-            }
-            else {
+            } else if (event.getMessage().getContentRaw().startsWith("1",4)) {
+                Defi.pion(1,event);
+            } else if (event.getMessage().getContentRaw().startsWith("2",4)) {
+                Defi.pion(2,event);
+            } else if (event.getMessage().getContentRaw().startsWith("3",4)) {
+                Defi.pion(3,event);
+            } else if (event.getMessage().getContentRaw().startsWith("4",4)) {
+                Defi.pion(4,event);
+            } else if (event.getMessage().getContentRaw().startsWith("5",4)) {
+                Defi.pion(5,event);
+            } else if (event.getMessage().getContentRaw().startsWith("6",4)) {
+                Defi.pion(6,event);
+            } else if (event.getMessage().getContentRaw().startsWith("7",4)) {
+                Defi.pion(7,event);
+            } else {
                 event.getChannel().sendMessage("Commande inconnue !").queue();
                 event.getChannel().sendMessage("Pour voir la liste des commandes, Executez la commande suivante : !p4 help").queue();
             }
         }
     }
+
 }
 
 
